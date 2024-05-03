@@ -11,5 +11,6 @@
 		public int Id_medicament { get => id_medicament; set => id_medicament = value; }
 		public int Id_type_individu { get => id_type_individu; set => id_type_individu = value; }
 		public string Posologie { get => posologie; set => posologie = value; }
+
 	}
 }
