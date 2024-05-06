@@ -1,8 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+	ViewBag.Title = "Accueil";
+	Layout = "~/Views/Shared/_LayoutMedicament.cshtml";
 }
+<h2>Accueil</h2>
+<div>
+	<p>
+		Bienvenue dans le monde MVC <span style="color:red">@ViewData["Nom"]</span>
+	</p>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
