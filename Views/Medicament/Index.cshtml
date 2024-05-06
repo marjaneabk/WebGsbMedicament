@@ -17,16 +17,14 @@
 			<table class="table table-bordered table-striped table-responsive">
 					<thead>
 						<tr>
-						<th>
-							id_medicament
-						</th>
-						<th>
-							id_famille
-						</th>
+							<th>id_medicament</th>
+							<th>id_famille</th>
+							<th>depot legal</th>
 							<th>nom commercial</th>
 							<th>effets</th>
 							<th>contre indication</th>
 							<th>prix echantillon</th>
+							<th>famille</th>
 							<th>quantité dosage</th>
 							<th>unite dosage</th>
 							<th>posologie</th>
@@ -42,7 +40,7 @@
 									<td>
 										@if (dataRow.ItemArray[dataRow.ItemArray.Length - 1].ToString() == item.ToString())
 										{
-											<img src="~/images/@item.ToString()" width="150" />
+											@item.ToString()
 										}
 										else
 										{
