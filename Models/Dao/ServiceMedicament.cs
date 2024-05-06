@@ -32,37 +32,49 @@ namespace WebGsbMedicament.Models.Dao
 			return mesMedicaments;
 		}
 
-		public static Medicament GetUnMedicament(string id)
+		public static Prescrire GetUnePrescription(String id)
 		{
 			DataTable dt;
-			Medicament unMedicament = null;
-
-			Serreurs er = new Serreurs("Erreur sur la lecture d'un medicament.", "ServiceMedicament.GetUnMedicament()");
-
+			Prescrire unePrescription = null;
+			Serreurs er = new Serreurs("Erreur sur la lecture d'une prescription.", "ServiceMedicament.GetUnePrescription()");
 			try
 			{
-				String mysql = "Select medicament.id_medicament, medicament.id_famille, medicament.nom_commercial, medicament.effets, medicament.contre_indication, medicament.prix_echantillon, dosage.qte_dosage, dosage.unite_dosage, prescrire.posologie, type_individu.lib_type_individu "
-					+ " from medicament join famille on medicament.id_famille = famille.id_famille join prescrire on prescrire.id_medicament = famille.id_famille "
-					+ " join dosage on prescrire.id_dosage = dosage.id_dosage join type_individu on prescrire.id_type_individu=type_individu.id_type_individu "
-					+ " where medicament.id_medicament = " + id;
+				String mysql = "SELECT id_medicament, id_dosage, id_type_individu, posologie";
+				mysql += " FROM prescrire ";
+				mysql += " WHERE id_medicament = " + id;
+				dt = DBInterface.Lecture(mysql, er);
+
 				if (dt.IsInitialized && dt.Rows.Count > 0)
 				{
-					unMedicament= new Medicament();
+					unePrescription = new Prescrire();
 					DataRow dataRow = dt.Rows[0];
-					unMedicament.Id_medicament = int.Parse(dataRow[0].ToString());
-					unMedicament.Id_famille = int.Parse(dataRow[0].ToString());
-					unMedicament.NomCommercial = dataRow[2].ToString();
-					unMedicament.Effets = dataRow[3].ToString();
-					unMedicament.ContreIndications = dataRow[4].ToString();
-					unMedicament.PrixEchantillon = dataRow[5].ToString();
-					unMedicament.Unite_dosage = dataRow[7].ToString();
-					unMedicament.Posologie = dataRow[8].ToString();
-					unMedicament.LibTypeIndividu = dataRow[9].ToString();
-					
-
+					unePrescription.Id_medicament = int.Parse(dataRow[0].ToString());
+					unePrescription.Id_dosage = int.Parse(dataRow[1].ToString());
+					unePrescription.Id_type_individu = int.Parse(dataRow[2].ToString());
+					unePrescription.Posologie = dataRow[3].ToString();
+					return unePrescription;
 				}
+				else
+					return null;
 			}
+			catch (MonException e)
+			{
+				throw new MonException(er.MessageUtilisateur(), er.MessageApplication(), e.Message);
+			}
+			
+
 		}
+
+		public static void ModifierPrescription(Prescrire unePrescription)
+		{
+			Serreurs er = new Serreurs("Erreur sur la modification d'une prescription.", "ServiceMedicament.ModifierPrescription()");
+			String mysql = "UPDATE prescrire SET " +
+				" id_dosage = " + unePrescription.Id_dosage + "', " +
+				" id_type_individu = " + unePrescription.Id_type_individu + "', " +
+				" posologie = '" + unePrescription.Posologie + "'" + "', " +
+				" WHERE id_medicament = " + unePrescription.Id_medicament;
+		}
+		
 		 
 
 
