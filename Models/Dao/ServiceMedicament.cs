@@ -32,7 +32,7 @@ namespace WebGsbMedicament.Models.Dao
 			return mesMedicaments;
 		}
 
-		/*public static Medicament GetUnMedicament(string id)
+		public static Medicament GetUnMedicament(string id)
 		{
 			DataTable dt;
 			Medicament unMedicament = null;
@@ -62,7 +62,7 @@ namespace WebGsbMedicament.Models.Dao
 
 				}
 			}
-		}*/
+		}
 		 
 
 
