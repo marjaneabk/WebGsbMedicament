@@ -28,6 +28,7 @@ namespace WebGsbMedicament.Controllers
 			try
 			{
 				unePrescription = ServiceMedicament.GetUnePrescription(id);
+
 				return View(unePrescription);
 			}catch(MonException e)
 			{
@@ -45,9 +46,33 @@ namespace WebGsbMedicament.Controllers
 			}
 			catch (MonException e)
 			{
+                ModelState.AddModelError("Erreur", "Erreur lors de la modif de la prescription : " + e.Message);
+                return View("Index") ;
+			}
+		}
+
+        public IActionResult Ajouter()
+        {
+            var unePrescription = new Prescrire();
+
+            return View(unePrescription);
+        }
+
+        [HttpPost]
+		public IActionResult Ajouter(Prescrire unePrescription)
+		{
+			try
+			{
+				ServiceMedicament.AddPrescription(unePrescription);
+				return RedirectToAction("Index");
+			}
+			catch (MonException e)
+			{
 				return NotFound() ;
 			}
 		}
+
+
 
 	}
 }

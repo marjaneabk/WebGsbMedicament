@@ -1,20 +1,23 @@
-﻿@model WebGsbMedicament.Models.Metier.Prescrire;
+﻿@model WebGsbMedicament.Models.Metier.Prescrire
+
 @{
-    ViewBag.Title = "Modifier";
+    ViewData["Title"] = "Ajouter";
     Layout = "~/Views/Shared/_LayoutMedicament.cshtml";
+
 }
 
-<h2>Modifier une prescription</h2>
+<h2>Ajouter une Prescription</h2>
+
 
 @if (Model != null)
 {
-    @using (Html.BeginForm("Modifier", "Medicament", FormMethod.Post))
+    @using (Html.BeginForm("Ajouter", "Medicament", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
         <div class="card col-8 mx-auto mt-5">
             <div class="card-body">
-                <h3 class="card-title">Modifier une prescription</h3>
+                <h3 class="card-title">Ajouter une prescription</h3>
                 <div class="form-horizontal">
                     <hr />
 
@@ -25,9 +28,8 @@
                         <div class="input-group-prepend mr-2 col-lg-4 col-xl-3">
                             <span class="input-group-text" id="id-medicament-input">Id Medicament : </span>
                         </div>
-                        @Html.EditorFor(model => model.Id_medicament, new { htmlAttributes = new {@class = "form-control", @disabled= "" } })
-                        @Html.ValidationMessageFor(model => model.Id_medicament, "", new { @class ="text-danger"  })
-                        <input name="Id_medicament" type="hidden" value="@Model.Id_medicament" id="Id_medicament" class="form-control" aria-describedby="id-medicament-input" />
+                        <input name="Id_medicament" type="text" value="@Model.Id_medicament" id="Id_medicament" class="form-control" aria-describedby="id-medicament-input" />
+
                     </div>
 
                     <!-- Id Dosage -->
@@ -35,7 +37,8 @@
                         <div class="input-group-prepend mr-2 col-lg-4 col-xl-3">
                             <span class="input-group-text" id="id-dosage-input">Id dosage :</span>
                         </div>
-                        <input name="Id_dosage" type="text" value="@Model.Id_dosage" id="Id_dosage" class="form-control" aria-describedby="id-dosage-input" />
+
+                        <input name="Id_dosage" type="text" value="@Model.Id_dosage" id="Id_dosage" class="form-control" aria-describedby="id-medicament-input" />
 
                     </div>
 
@@ -53,7 +56,7 @@
                         <div class="input-group-prepend mr-2 col-lg-4 col-xl-3">
                             <span class="input-group-text" id="posologie-input">Posologie :</span>
                         </div>
-                        <input name="Posologie" type="text" class="form-control" value="@Model.Posologie" id="Posologie" />
+                        <input name="Posologie" type="text" class="form-control"  />
                     </div>
 
                     <div class="form-group">
@@ -61,6 +64,7 @@
                             <input type="submit" value="Enregistrer" class="btn btn-primary" />
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

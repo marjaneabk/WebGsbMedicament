@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using WebGsbMedicament.Models.MesExceptions;
 using WebGsbMedicament.Models.Metier;
@@ -68,10 +69,10 @@ namespace WebGsbMedicament.Models.Dao
 		public static void ModifierPrescription(Prescrire unePrescription)
 		{
 			Serreurs er = new Serreurs("Erreur sur la modification d'une prescription.", "ServiceMedicament.ModifierPrescription()");
-			String mysql = "UPDATE prescrire SET " +
-				" id_dosage = " + unePrescription.Id_dosage + "', " +
-				" id_type_individu = " + unePrescription.Id_type_individu + "', " +
-				" posologie = '" + unePrescription.Posologie + "'" + "', " +
+			String mysql = "UPDATE prescrire " +
+				" SET id_dosage = " + unePrescription.Id_dosage + ", " +
+				" id_type_individu = " + unePrescription.Id_type_individu + ", " +
+				" posologie = '" + unePrescription.Posologie + "'" + 
 				" WHERE id_medicament = " + unePrescription.Id_medicament;
 			try
 			{
@@ -82,9 +83,30 @@ namespace WebGsbMedicament.Models.Dao
 			}
 		}
 
-		
-		 
+        public static void AddPrescription(Prescrire unePrep)
+        {
+            Serreurs er = new Serreurs("Erreur lors de l'ajout d'une prescription.", "ServiceMedicament.AddPrescription()");
+            string mysql = "INSERT INTO prescrire (id_dosage, id_medicament, id_type_individu, posologie) " +
+                           "VALUES + (" + unePrep.Id_dosage + "', " +
+                           unePrep.Id_medicament + "', " +
+                           unePrep.Id_type_individu+ "', " +
+                           unePrep.Posologie + "', " +
+                           "')";
+            try
+            {
+                DBInterface.Execute_Transaction(mysql);
+
+            }
+            catch (MonException e)
+            {
+                throw e;
+            }
+        }
 
 
-	}
+
+
+
+
+    }
 }

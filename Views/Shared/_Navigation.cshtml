@@ -7,30 +7,8 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Interroger
-					</a>
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">Fiches</li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" asp-area="" asp-controller="Medicament" aspaction="Index">Liste des medicaments</a></li>
-					</ul>
-				</li>
-
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Gérer
-					</a>
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">Gestion</li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" asp-area="" asp-controller="Medicament" aspaction="Ajout">Ajouter Medicament</a></li>
-						<li><a class="dropdown-item" asp-area="" asp-controller="Medicament" aspaction="Modifier">Modifier Medicament</a></li>
-					</ul>
-				</li>
+					<li><a class="dropdown-item" asp-area="" asp-controller="Medicament" asp-action="Index">Liste des medicaments</a></li>
+					<li><a class="dropdown-item" asp-area="" asp-controller="Medicament" asp-action="Ajouter">Ajouter Medicament</a></li>
 			</ul>
 		</div>
 	</div>
