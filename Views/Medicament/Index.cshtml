@@ -7,8 +7,10 @@
 	Layout = "~/Views/Shared/_LayoutMedicament.cshtml";
 } 
 
+
 @if (Model != null)
 {
+
 	<div class="container">
         <div class="col-md-8 col-sm-8">
 			<div class="blanc">
@@ -53,16 +55,16 @@
 									}
 								<td style="text-align:center;">
 									<span>
-									<a href="@Url.Action("Modifier", "Medicament", new { id = dataRow[0] })" class="btn btn-default btn-primary">
-										<i class="bi bi-pencil-fill"></i>Modifier
-									</a>
+										<a href="@Url.Action("Modifier", "Medicament", new { id = dataRow[0] })" class="btn btn-modifier">
+											Modifier
+										</a>
 									</span>
 								</td>
 
 								<td style="text-align:center;">
 									<span>
-										<a href="@Url.Action("Supprimer", "Medicament", new { id = dataRow[0] })" class="btn btn-default btn-danger">
-											<i class="bi bi-trash-fill"></i>Supprimer
+										<a href="@Url.Action("Supprimer", "Medicament", new { id = dataRow[0] })" class="btn btn-supprimer">
+											 Supprimer
 										</a>
 									</span>
 								</td>
@@ -71,8 +73,48 @@
 				</table>
 
 		</div>
-	</div>
-			
-
+	</div>		
 }
+
+<style>
+	/* Style pour le titre */
+	.blanc h2 {
+		margin-top: 20px;
+		color: #333;
+	}
+
+	/* Style pour la table */
+	.table {
+		width: 100%;
+		border-collapse: collapse;
+		border: 1px solid #ddd;
+	}
+
+		/* Style pour les cellules de la table */
+		.table th, .table td {
+			padding: 8px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+	/* Style pour les boutons Modifier */
+	.btn-modifier {
+		background-color: #007bff;
+		color: #fff;
+	}
+
+		.btn-modifier:hover {
+			background-color: #0056b3;
+		}
+
+	/* Style pour les boutons Supprimer */
+	.btn-supprimer {
+		background-color: #dc3545;
+		color: #fff;
+	}
+
+		.btn-supprimer:hover {
+			background-color: #bd2130;
+		}
+</style>
 
