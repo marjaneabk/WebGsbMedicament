@@ -103,6 +103,23 @@ namespace WebGsbMedicament.Models.Dao
         }
 
 
+        public static void DeletePrescription(string id)
+        {
+            Serreurs er = new Serreurs("Erreur sur la la suppression d'une prescription.", "ServiceMedicament.DeletePrescription()");
+            String mysql = "DELETE FROM prescrire WHERE id_medicament = " + id;
+            try
+            {
+                DBInterface.Execute_Transaction(mysql);
+            }
+            catch (MonException e)
+            {
+                throw e;
+            }
+        }
+
+
+
+
 
 
 

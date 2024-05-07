@@ -73,7 +73,24 @@ namespace WebGsbMedicament.Controllers
             }
 		}
 
+        public IActionResult Supprimer(string id)
+
+        {
+            try
+            {
+                ServiceMedicament.DeletePrescription(id);
+                return RedirectToAction("Index");
+            }
+
+            catch (MonException e)
+            {
+                ModelState.AddModelError("Erreur", "Erreur lors de la suppression de la prescription : " + e.Message);
+                return RedirectToAction("Index");
+
+            }
+        }
 
 
-	}
+
+    }
 }

@@ -6,8 +6,6 @@
 
 }
 
-<h2>Ajouter une Prescription</h2>
-
 
 @if (Model != null)
 {
@@ -28,7 +26,7 @@
                         <div class="input-group-prepend mr-2 col-lg-4 col-xl-3">
                             <span class="input-group-text" id="id-medicament-input">Id Medicament : </span>
                         </div>
-                        <input name="Id_medicament" type="text" value="@Model.Id_medicament" id="Id_medicament" class="form-control" aria-describedby="id-medicament-input" />
+                        <input name="Id_medicament" type="number" value="@Model.Id_medicament" id="Id_medicament" class="form-control" aria-describedby="id-medicament-input" />
 
                     </div>
 
@@ -38,7 +36,7 @@
                             <span class="input-group-text" id="id-dosage-input">Id dosage :</span>
                         </div>
 
-                        <input name="Id_dosage" type="text" value="@Model.Id_dosage" id="Id_dosage" class="form-control" aria-describedby="id-medicament-input" />
+                        <input name="Id_dosage" type="number" value="@Model.Id_dosage" id="Id_dosage" class="form-control" aria-describedby="id-medicament-input" />
 
                     </div>
 
@@ -47,7 +45,7 @@
                         <div class="input-group-prepend mr-2 col-lg-4 col-xl-3">
                             <span class="input-group-text" id="id-type-individu-input">Id Type Individu :</span>
                         </div>
-                        <input name="Id_type_individu" type="text" value="@Model.Id_type_individu" id="Id_type_individu" class="form-control" aria-describedby="id-type-individu-input" />
+                        <input name="Id_type_individu" type="number" value="@Model.Id_type_individu" id="Id_type_individu" class="form-control" aria-describedby="id-type-individu-input" />
 
                     </div>
 
@@ -62,7 +60,10 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Enregistrer" class="btn btn-primary" />
+
+                            @Html.ActionLink("Retourner à l'accueil", "Index", "Medicament", null, new { @class = "btn btn-primary" })
                         </div>
+
                     </div>
 
                 </div>
