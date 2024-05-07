@@ -41,7 +41,7 @@ namespace WebGsbMedicament.Controllers
 			try
 			{
 				ServiceMedicament.ModifierPrescription(unePrescription);
-				return View();
+				return RedirectToAction("Index");
 			}
 			catch (MonException e)
 			{

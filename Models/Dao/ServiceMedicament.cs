@@ -73,6 +73,13 @@ namespace WebGsbMedicament.Models.Dao
 				" id_type_individu = " + unePrescription.Id_type_individu + "', " +
 				" posologie = '" + unePrescription.Posologie + "'" + "', " +
 				" WHERE id_medicament = " + unePrescription.Id_medicament;
+			try
+			{
+				DBInterface.Execute_Transaction(mysql);
+			}
+			catch (MonException e) {
+				throw e;
+			}
 		}
 		
 		 
