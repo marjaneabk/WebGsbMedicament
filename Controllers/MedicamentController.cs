@@ -68,8 +68,9 @@ namespace WebGsbMedicament.Controllers
 			}
 			catch (MonException e)
 			{
-				return NotFound() ;
-			}
+                ModelState.AddModelError("Erreur", "Erreur lors de la modif de la prescription : " + e.Message);
+                return View(unePrescription);
+            }
 		}
 
 

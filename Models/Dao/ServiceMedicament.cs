@@ -87,11 +87,10 @@ namespace WebGsbMedicament.Models.Dao
         {
             Serreurs er = new Serreurs("Erreur lors de l'ajout d'une prescription.", "ServiceMedicament.AddPrescription()");
             string mysql = "INSERT INTO prescrire (id_dosage, id_medicament, id_type_individu, posologie) " +
-                           "VALUES + (" + unePrep.Id_dosage + "', " +
-                           unePrep.Id_medicament + "', " +
-                           unePrep.Id_type_individu+ "', " +
-                           unePrep.Posologie + "', " +
-                           "')";
+                           "VALUES ('" + unePrep.Id_dosage + "', '" +
+                           unePrep.Id_medicament + "', '" +
+                           unePrep.Id_type_individu + "', '" +
+                           unePrep.Posologie + "')";
             try
             {
                 DBInterface.Execute_Transaction(mysql);
