@@ -16,7 +16,7 @@ namespace WebGsbMedicament.Models.Dao
 			Serreurs er = new Serreurs("Erreur sur la lecture des medicaments", "ServiceMedicament.GetTousLesMedicaments()");
 			try
 			{
-				string mysql = "SELECT medicament.id_medicament, medicament.id_famille, medicament.depot_legal,medicament.nom_commercial, medicament.effets, medicament.contre_indication, medicament.prix_echantillon, famille.lib_famille, dosage.qte_dosage, dosage.unite_dosage, prescrire.posologie, type_individu.lib_type_individu "
+				string mysql = "SELECT medicament.id_medicament, medicament.id_famille, medicament.depot_legal,medicament.nom_commercial, medicament.effets, medicament.contre_indication, famille.lib_famille, dosage.qte_dosage, dosage.unite_dosage, prescrire.posologie, type_individu.lib_type_individu "
 					+ " FROM medicament "
 					+ " JOIN famille ON medicament.id_famille = famille.id_famille "
 					+ " JOIN prescrire ON medicament.id_medicament = prescrire.id_medicament "
